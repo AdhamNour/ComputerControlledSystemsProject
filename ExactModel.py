@@ -6,7 +6,7 @@ def getExactModel(Tsim,Tsampling):
     a = (1/(math.sqrt(4.59)))*math.exp(-2.1*Tsampling)*math.sin(math.sqrt(4.59)*Tsampling)
     
     phi = [[w+2.1*a,a],[-9*a,w-2.1*a]]
-    theta=[((4/9)+(4/9)*w+(0.6/9)*a),(w+(17.1/9)*a-1)]
+    theta=[((4/9)+(4/9)*w+(0.6/9)*a),(w+1.9*a-1)]
     
         
     x=[[0],[0]]
