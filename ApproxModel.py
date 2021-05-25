@@ -4,7 +4,6 @@ import math
 def getApproxModel(Tsim,Tsampling):
     x=[[0],[0]]
     n=int(Tsim/Tsampling)
-    print(n)
     timeAxis=[0]
     for i in range(n):
         x1k=x[0][i]
