@@ -2,9 +2,10 @@ import matplotlib.pyplot as plt
 import math
 from AnalyticModel import getAnalyticModel
 from ApproxModel import getApproxModel
+from ExactModel import getExactModel
 from ISE import ISE
 
-Tsamples =[0.001,0.01,0.1,0.5,1]
+Tsamples =[0.01]
 
 for i in Tsamples:
     plt.figure()
@@ -15,7 +16,7 @@ for i in Tsamples:
     plt.ylabel("amplitude")
     plt.title("The Analytical response of the System")
 
-    (xapprox,yapprox) = getApproxModel(10,i)
+    (xapprox,yapprox) = getExactModel(10,i)
     plt.subplot(222)
     plt.plot(xapprox, yapprox)
     plt.xlabel("time")
