@@ -7,61 +7,50 @@ from ApproxModel import getApproxModel
 from ExactModel import getExactModel
 from ISE import ISE
 
-Tsamples =[]
+Tsamples =[0.01,0.1]
 
-for i in range(7):
-    Tsamples.append(math.pow(10,-1*i))
+    
 
 
-for i in Tsamples:
-    plt.figure()
-    (x,y) = getAnalyticModel()
-    plt.subplot(221)
-    plt.plot(x, y)
-    plt.xlabel("time")
-    plt.ylabel("amplitude")
-    plt.title("The Analytical response of the System")
-
-    (xapprox,yapprox) = getApproxModel(10,i)
-    plt.subplot(222)
-    plt.plot(xapprox, yapprox)
-    plt.xlabel("time")
-    plt.ylabel("amplitude")
-    plt.title("The Approx response of the System")
-
-    errors = ISE(yapprox,i)
-    plt.subplot(212)
-    plt.plot(xapprox, errors)
-    plt.xlabel("time")
-    plt.ylabel("error")
-    plt.title("The error between the approx and analytical responces")
 
 for i in Tsamples:
     plt.figure()
     plt.suptitle(i)
-    (x,y) = getAnalyticModel()
-    plt.subplot(221)
-    plt.plot(x, y)
-    plt.xlabel("time")
-    plt.ylabel("amplitude")
-    plt.title("The Analytical response of the System")
 
-    (xapprox,yapprox) = getExactModel(10,i)
-    plt.subplot(222)
-    plt.plot(xapprox, yapprox)
+    (x,y) = getAnalyticModel()
+    plt.subplot(211)
+    plt.plot(x, y,color='g',label='Analytic Model Response')
     plt.xlabel("time")
     plt.ylabel("amplitude")
-    plt.title("The Approx response of the System")
+
+    (xapprox,yapprox) = getApproxModel(10,i)
+    plt.subplot(211)
+    plt.plot(xapprox, yapprox,label='Approx Model Response')
+    plt.xlabel("time")
+    plt.ylabel("amplitude")
+
+
+    (xapprox1,yapprox1) = getExactModel(10,i)
+    plt.subplot(211)
+    plt.plot(xapprox1, yapprox1,color='k',label='Exact Model Response')
+    plt.xlabel("time")
+    plt.ylabel("amplitude")
+    plt.title("The response of the System")
+    plt.legend()
 
     errors = ISE(yapprox,i)
     plt.subplot(212)
-    plt.plot(xapprox, errors)
+    plt.plot(xapprox, errors,color='r',label='Error of Approx Model')
     plt.xlabel("time")
     plt.ylabel("error")
-    plt.title("The error between the approx and analytical responces")
+    
+    
+    errors = ISE(yapprox1,i)
+    plt.subplot(212)
+    plt.plot(xapprox1, errors,color='m' ,label='Error of Exact Model' )
+    plt.xlabel("time")
+    plt.ylabel("error")
+    plt.title("The error between the Approx and Exact Models against Analytical Model responces")
+    plt.legend()
 
 plt.show()
-
-
-# A= np.array([[0,1], [-9,-4.2]])
-# invA=np.linalg.inv(A)
