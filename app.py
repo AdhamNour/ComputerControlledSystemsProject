@@ -7,7 +7,7 @@ from ApproxModel import getApproxModel
 from ExactModel import getExactModel
 from ISE import ISE
 
-Tsamples =[0.01,0.1]
+Tsamples =[0.01,0.1,0.5]
 
     
 
